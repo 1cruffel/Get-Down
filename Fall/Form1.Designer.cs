@@ -32,10 +32,15 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.screen = new System.Windows.Forms.Panel();
             this.player = new System.Windows.Forms.PictureBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.playerTick = new System.Windows.Forms.Timer(this.components);
+            this.platL = new System.Windows.Forms.PictureBox();
+            this.gameTick = new System.Windows.Forms.Timer(this.components);
+            this.platR = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platR)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -48,6 +53,8 @@
             // 
             // screen
             // 
+            this.screen.Controls.Add(this.platR);
+            this.screen.Controls.Add(this.platL);
             this.screen.Controls.Add(this.player);
             this.screen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.screen.Location = new System.Drawing.Point(0, 0);
@@ -64,11 +71,35 @@
             this.player.TabIndex = 0;
             this.player.TabStop = false;
             // 
-            // timer1
+            // playerTick
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.playerTick.Enabled = true;
+            this.playerTick.Interval = 1;
+            this.playerTick.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // platL
+            // 
+            this.platL.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.platL.Location = new System.Drawing.Point(0, 395);
+            this.platL.Name = "platL";
+            this.platL.Size = new System.Drawing.Size(402, 28);
+            this.platL.TabIndex = 1;
+            this.platL.TabStop = false;
+            // 
+            // gameTick
+            // 
+            this.gameTick.Enabled = true;
+            this.gameTick.Interval = 1;
+            this.gameTick.Tick += new System.EventHandler(this.gameTick_Tick);
+            // 
+            // platR
+            // 
+            this.platR.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.platR.Location = new System.Drawing.Point(425, 395);
+            this.platR.Name = "platR";
+            this.platR.Size = new System.Drawing.Size(375, 28);
+            this.platR.TabIndex = 2;
+            this.platR.TabStop = false;
             // 
             // Form1
             // 
@@ -84,6 +115,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.screen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platR)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -93,7 +126,10 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel screen;
         private System.Windows.Forms.PictureBox player;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer playerTick;
+        private System.Windows.Forms.PictureBox platL;
+        private System.Windows.Forms.Timer gameTick;
+        private System.Windows.Forms.PictureBox platR;
     }
 }
 
