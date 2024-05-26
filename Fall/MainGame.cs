@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace Fall
 {
-    public partial class Form1 : Form
+    public partial class MainGame : Form
     { 
-        bool right, left, jump;
+        bool right, left, jump, rising = false;
         int G = 20, Force;
-        int speed = 1, x, diff = 10;
+        int speed = 1, x, diff = 80;
         Random random = new Random();
-        public Form1()
+        public MainGame()
         {
             InitializeComponent();
             x = random.Next(0, (screen.Width - diff));
@@ -36,7 +36,7 @@ namespace Fall
                 platR.Top = screen.Height;
                 platL.Width = x;
                 platR.Width = screen.Width - (x + diff);
-                platR.Left = screen.Width - (x + diff);
+                platR.Left = screen.Width - platR.Width;
             }
                 platL.Top -= speed;
                 platR.Top = platL.Top;
@@ -66,6 +66,18 @@ namespace Fall
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //left collision
+            if (player.Left == platL.Width && player.Right < platL.Right - player.Width / 2 && player.Bottom > platL.Top && player.Top < platL.Bottom)
+            {
+                left = false;
+            }
+            //right collision
+            if (player.Right == platR.Width && player.Left < platR.Left - player.Width / 2 && player.Bottom > platR.Top && player.Top < platR.Bottom)
+            {
+                right = false;
+            }
+           
+            //gravity
             if (right == true) {player.Left += 5; }
             if (left == true) { player.Left -= 5; }
             if (jump == true)
@@ -77,6 +89,18 @@ namespace Fall
             {
                 player.Top = screen.Height - player.Height; //stop falling at bottom
                 jump = false;
+            }
+            else if (player.Bottom < platL.Bottom + platL.Height && player.Left < platL.Width && player.Bottom < platL.Bottom + platL.Height + 5)
+            {
+                Force = 0;
+                jump = false;
+                rising = true;
+            }
+            else if (player.Bottom < platR.Bottom + platR.Height && player.Right < platR.Width && player.Bottom < platR.Bottom + platL.Height + 5)
+            {
+                Force = 0;
+                jump = false;
+                rising = true;
             }
             else
             {
@@ -90,6 +114,16 @@ namespace Fall
             {
                 player.Left = 1;
             }
+
+            //top collision
+            
+            if (rising)
+            {
+                Force = 0;
+                jump = false;
+                player.Top -= speed;
+            }
+
         }
     }
 }

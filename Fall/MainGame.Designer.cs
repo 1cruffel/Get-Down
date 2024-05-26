@@ -1,6 +1,6 @@
 ﻿namespace Fall
 {
-    partial class Form1
+    partial class MainGame
     {
         /// <summary>
         /// Required designer variable.
@@ -31,16 +31,16 @@
             this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.screen = new System.Windows.Forms.Panel();
+            this.platR = new System.Windows.Forms.PictureBox();
+            this.platL = new System.Windows.Forms.PictureBox();
             this.player = new System.Windows.Forms.PictureBox();
             this.playerTick = new System.Windows.Forms.Timer(this.components);
-            this.platL = new System.Windows.Forms.PictureBox();
             this.gameTick = new System.Windows.Forms.Timer(this.components);
-            this.platR = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.screen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.platL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -62,6 +62,24 @@
             this.screen.Size = new System.Drawing.Size(800, 450);
             this.screen.TabIndex = 1;
             // 
+            // platR
+            // 
+            this.platR.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.platR.Location = new System.Drawing.Point(425, 395);
+            this.platR.Name = "platR";
+            this.platR.Size = new System.Drawing.Size(375, 28);
+            this.platR.TabIndex = 2;
+            this.platR.TabStop = false;
+            // 
+            // platL
+            // 
+            this.platL.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.platL.Location = new System.Drawing.Point(0, 395);
+            this.platL.Name = "platL";
+            this.platL.Size = new System.Drawing.Size(402, 28);
+            this.platL.TabIndex = 1;
+            this.platL.TabStop = false;
+            // 
             // player
             // 
             this.player.BackColor = System.Drawing.Color.Black;
@@ -77,29 +95,11 @@
             this.playerTick.Interval = 1;
             this.playerTick.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // platL
-            // 
-            this.platL.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.platL.Location = new System.Drawing.Point(0, 395);
-            this.platL.Name = "platL";
-            this.platL.Size = new System.Drawing.Size(402, 28);
-            this.platL.TabIndex = 1;
-            this.platL.TabStop = false;
-            // 
             // gameTick
             // 
             this.gameTick.Enabled = true;
-            this.gameTick.Interval = 1;
+            this.gameTick.Interval = 5;
             this.gameTick.Tick += new System.EventHandler(this.gameTick_Tick);
-            // 
-            // platR
-            // 
-            this.platR.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.platR.Location = new System.Drawing.Point(425, 395);
-            this.platR.Name = "platR";
-            this.platR.Size = new System.Drawing.Size(375, 28);
-            this.platR.TabIndex = 2;
-            this.platR.TabStop = false;
             // 
             // Form1
             // 
@@ -114,9 +114,9 @@
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.screen.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.platL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.platR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
             this.ResumeLayout(false);
 
         }
