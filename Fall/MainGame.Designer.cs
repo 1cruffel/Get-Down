@@ -65,9 +65,9 @@
             // platR
             // 
             this.platR.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.platR.Location = new System.Drawing.Point(425, 395);
+            this.platR.Location = new System.Drawing.Point(509, 395);
             this.platR.Name = "platR";
-            this.platR.Size = new System.Drawing.Size(375, 28);
+            this.platR.Size = new System.Drawing.Size(291, 28);
             this.platR.TabIndex = 2;
             this.platR.TabStop = false;
             // 
@@ -101,14 +101,14 @@
             this.gameTick.Interval = 5;
             this.gameTick.Tick += new System.EventHandler(this.gameTick_Tick);
             // 
-            // Form1
+            // MainGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.screen);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "Form1";
+            this.Name = "MainGame";
             this.Text = "Get Down!";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);

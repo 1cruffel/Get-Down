@@ -90,21 +90,32 @@ namespace Fall
                 player.Top = screen.Height - player.Height; //stop falling at bottom
                 jump = false;
             }
-            else if (player.Bottom < platL.Bottom + platL.Height && player.Left < platL.Width && player.Bottom < platL.Bottom + platL.Height + 5)
+            else if(player.Top + player.Height < platL.Top && player.Top + player.Height > platL.Top - 5)
+            //else if (player.Bottom < platL.Bottom + platL.Height && player.Left < platL.Width && player.Bottom < platL.Bottom + platL.Height + 5)
             {
-                Force = 0;
-                jump = false;
-                rising = true;
+                if (player.Left < platL.Width || player.Right < platR.Width)
+                {
+                    Force = 0;
+                    jump = false;
+                    rising = true;
+                }
+                else
+                {
+                    player.Top += 7; //falling
+                    rising = false;
+                }
+
             }
-            else if (player.Bottom < platR.Bottom + platR.Height && player.Right < platR.Width && player.Bottom < platR.Bottom + platL.Height + 5)
-            {
-                Force = 0;
-                jump = false;
-                rising = true;
-            }
+            //else if (player.Bottom < platR.Bottom + platR.Height && player.Right < platR.Width && player.Bottom < platR.Bottom + platR.Height + 5)
+           // {
+           //     Force = 0;
+           //     jump = false;
+           //     rising = true;
+           // }
             else
             {
                 player.Top += 7; //falling
+                rising = false;
             }
             if (player.Left + player.Width <= 0)
             {
