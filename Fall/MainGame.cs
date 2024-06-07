@@ -13,22 +13,61 @@ namespace Fall
     public partial class MainGame : Form
     { 
         bool right, left, jump, rising = false;
-        int G = 20, Force;
+        int G = 10, Force;
         int speed = 1, x, diff = 80;
+        int total, notTouching;
+        bool falling;
+
+        private void platchr_Tick(object sender, EventArgs e)
+        {
+            total = 0;
+            notTouching = 0;
+            foreach (Control x in screen.Controls)
+            {
+                if (x is PictureBox)
+                {
+                    if ((string)x.Tag == "platform")
+                    {
+                        if (!(player.Bounds.IntersectsWith(x.Bounds)))
+                        {
+                            
+                        }
+                        else
+                        {
+                            notTouching += 1;
+                            jump = false;
+                            Force = 0;
+                            player.Top = x.Top - player.Height - 1;
+                        }
+
+                    }
+                }
+            }
+            if (total == notTouching && !jump)
+            {
+                fallCheck.Start();
+            }
+            else
+            {
+                fallCheck.Stop();
+            }
+
+        }
+
+        private void fallCheck_Tick(object sender, EventArgs e)
+        {
+            player.Top += 7;
+        }
+
         Random random = new Random();
         public MainGame()
         {
             InitializeComponent();
-            x = random.Next(0, (screen.Width - diff));
-            platL.Top = screen.Height;
-            platR.Top = screen.Height;
-            platL.Width = x;
-            platR.Width = screen.Width - (x + diff);
-            platR.Left = screen.Width - (x + diff);
         }
 
         private void gameTick_Tick(object sender, EventArgs e)
         {
+            //check when platform reaches top
             if(platL.Top <= 0)
             {
                 x = random.Next(0, (screen.Width - diff));
@@ -85,49 +124,41 @@ namespace Fall
                 player.Top -= Force;
                 Force -= 1;
             }
-            if (player.Top + player.Height >= screen.Height)
+            if (player.Right < 0)
             {
-                player.Top = screen.Height - player.Height; //stop falling at bottom
-                jump = false;
+                right = false;
             }
-            else if(player.Top + player.Height < platL.Top && player.Top + player.Height > platL.Top - 5)
-            //else if (player.Bottom < platL.Bottom + platL.Height && player.Left < platL.Width && player.Bottom < platL.Bottom + platL.Height + 5)
+            if (player.Left < 0)
             {
-                if (player.Left < platL.Width || player.Right < platR.Width)
-                {
-                    Force = 0;
-                    jump = false;
-                    rising = true;
-                }
-                else
-                {
-                    player.Top += 7; //falling
-                    rising = false;
-                }
-
+                left = false;
             }
-            //else if (player.Bottom < platR.Bottom + platR.Height && player.Right < platR.Width && player.Bottom < platR.Bottom + platR.Height + 5)
-           // {
-           //     Force = 0;
-           //     jump = false;
-           //     rising = true;
-           // }
-            else
-            {
-                player.Top += 7; //falling
-                rising = false;
-            }
-            if (player.Left + player.Width <= 0)
-            {
-                player.Left = screen.Width - 1;
-            }
-            if (player.Left >= screen.Width)
-            {
-                player.Left = 1;
-            }
-
+            // if (player.Top + player.Height >= screen.Height)
+            // {
+            //
+            // }
+            // else if(player.Top + player.Height < platL.Top && player.Top + player.Height > platL.Top - 5)
+            // {
+            //     if (player.Left < platL.Width || player.Right < platR.Width)
+            //     {
+            //         Force = 0;
+            //         jump = false;
+            //         rising = true;
+            //     }
+            //     else
+            //     {
+            //         player.Top += 7; //falling
+            //         rising = false;
+            //     }
+            //
+            // }
+            // //else
+            // {
+            //     player.Top += 7; //falling
+            //     rising = false;
+            // }
+            //
             //top collision
-            
+
             if (rising)
             {
                 Force = 0;

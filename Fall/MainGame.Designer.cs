@@ -36,11 +36,15 @@
             this.player = new System.Windows.Forms.PictureBox();
             this.playerTick = new System.Windows.Forms.Timer(this.components);
             this.gameTick = new System.Windows.Forms.Timer(this.components);
+            this.floor = new System.Windows.Forms.PictureBox();
+            this.fallCheck = new System.Windows.Forms.Timer(this.components);
+            this.platchr = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.platR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.floor)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -53,6 +57,7 @@
             // 
             // screen
             // 
+            this.screen.Controls.Add(this.floor);
             this.screen.Controls.Add(this.platR);
             this.screen.Controls.Add(this.platL);
             this.screen.Controls.Add(this.player);
@@ -70,6 +75,7 @@
             this.platR.Size = new System.Drawing.Size(291, 28);
             this.platR.TabIndex = 2;
             this.platR.TabStop = false;
+            this.platR.Tag = "platform";
             // 
             // platL
             // 
@@ -79,6 +85,7 @@
             this.platL.Size = new System.Drawing.Size(402, 28);
             this.platL.TabIndex = 1;
             this.platL.TabStop = false;
+            this.platL.Tag = "platform";
             // 
             // player
             // 
@@ -101,6 +108,27 @@
             this.gameTick.Interval = 5;
             this.gameTick.Tick += new System.EventHandler(this.gameTick_Tick);
             // 
+            // floor
+            // 
+            this.floor.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.floor.Location = new System.Drawing.Point(0, 422);
+            this.floor.Name = "floor";
+            this.floor.Size = new System.Drawing.Size(800, 28);
+            this.floor.TabIndex = 3;
+            this.floor.TabStop = false;
+            this.floor.Tag = "platform";
+            // 
+            // fallCheck
+            // 
+            this.fallCheck.Interval = 1;
+            this.fallCheck.Tick += new System.EventHandler(this.fallCheck_Tick);
+            // 
+            // platchr
+            // 
+            this.platchr.Enabled = true;
+            this.platchr.Interval = 1;
+            this.platchr.Tick += new System.EventHandler(this.platchr_Tick);
+            // 
             // MainGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,6 +136,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.screen);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "MainGame";
             this.Text = "Get Down!";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -117,6 +146,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.platR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.platL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.floor)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -130,6 +160,9 @@
         private System.Windows.Forms.PictureBox platL;
         private System.Windows.Forms.Timer gameTick;
         private System.Windows.Forms.PictureBox platR;
+        private System.Windows.Forms.PictureBox floor;
+        private System.Windows.Forms.Timer fallCheck;
+        private System.Windows.Forms.Timer platchr;
     }
 }
 
