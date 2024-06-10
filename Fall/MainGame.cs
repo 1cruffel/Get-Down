@@ -83,8 +83,10 @@ namespace Fall
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Right) { right = true; }
-            if(e.KeyCode == Keys.Left) { left = true; }
+            if (e.KeyCode == Keys.Right && player.Left + player.Width < screen.Width) { right = true; }
+            else if(player.Left + player.Width >= screen.Width){ right = false; }
+            if(e.KeyCode == Keys.Left && player.Left > floor.Left) { left = true; }
+            else if (player.Left <= 0) { left = false; }
             if (e.KeyCode == Keys.Escape) { this.Close(); }
             if (jump != true)
             {
