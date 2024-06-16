@@ -31,20 +31,21 @@
             this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.screen = new System.Windows.Forms.Panel();
+            this.floor = new System.Windows.Forms.PictureBox();
             this.platR = new System.Windows.Forms.PictureBox();
             this.platL = new System.Windows.Forms.PictureBox();
             this.player = new System.Windows.Forms.PictureBox();
             this.playerTick = new System.Windows.Forms.Timer(this.components);
             this.gameTick = new System.Windows.Forms.Timer(this.components);
-            this.floor = new System.Windows.Forms.PictureBox();
             this.fallCheck = new System.Windows.Forms.Timer(this.components);
             this.platchr = new System.Windows.Forms.Timer(this.components);
+            this.platforms = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.screen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.floor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.floor)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -66,6 +67,16 @@
             this.screen.Name = "screen";
             this.screen.Size = new System.Drawing.Size(800, 450);
             this.screen.TabIndex = 1;
+            // 
+            // floor
+            // 
+            this.floor.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.floor.Location = new System.Drawing.Point(0, 422);
+            this.floor.Name = "floor";
+            this.floor.Size = new System.Drawing.Size(800, 28);
+            this.floor.TabIndex = 3;
+            this.floor.TabStop = false;
+            this.floor.Tag = "platform";
             // 
             // platR
             // 
@@ -108,16 +119,6 @@
             this.gameTick.Interval = 5;
             this.gameTick.Tick += new System.EventHandler(this.gameTick_Tick);
             // 
-            // floor
-            // 
-            this.floor.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.floor.Location = new System.Drawing.Point(0, 422);
-            this.floor.Name = "floor";
-            this.floor.Size = new System.Drawing.Size(800, 28);
-            this.floor.TabIndex = 3;
-            this.floor.TabStop = false;
-            this.floor.Tag = "platform";
-            // 
             // fallCheck
             // 
             this.fallCheck.Interval = 1;
@@ -128,6 +129,12 @@
             this.platchr.Enabled = true;
             this.platchr.Interval = 1;
             this.platchr.Tick += new System.EventHandler(this.platchr_Tick);
+            // 
+            // platforms
+            // 
+            this.platforms.Enabled = true;
+            this.platforms.Interval = 1;
+            this.platforms.Tick += new System.EventHandler(this.platforms_Tick);
             // 
             // MainGame
             // 
@@ -143,10 +150,10 @@
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.screen.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.floor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.platR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.platL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.floor)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -163,6 +170,7 @@
         private System.Windows.Forms.PictureBox floor;
         private System.Windows.Forms.Timer fallCheck;
         private System.Windows.Forms.Timer platchr;
+        private System.Windows.Forms.Timer platforms;
     }
 }
 

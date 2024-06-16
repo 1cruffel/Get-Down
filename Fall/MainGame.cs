@@ -16,6 +16,7 @@ namespace Fall
         int G = 10, Force;
         int speed = 1, x, diff = 80;
         int total, notTouching;
+        const int HEIGHT = 10;
         bool falling;
 
         private void platchr_Tick(object sender, EventArgs e)
@@ -26,7 +27,7 @@ namespace Fall
             {
                 if (x is PictureBox)
                 {
-                    if ((string)x.Tag == "platform")
+                    if ((string)x.Tag == "platform" || (string)x.Tag == "risingPlatform")
                     {
                         if (!(player.Bounds.IntersectsWith(x.Bounds)))
                         {
@@ -52,6 +53,31 @@ namespace Fall
                 fallCheck.Stop();
             }
 
+        }
+
+        private void platforms_Tick(object sender, EventArgs e)
+        {
+            foreach(Control y in screen.Controls)
+            {
+                if(y is PictureBox)
+                {
+                    if((String)y.Tag == "risingPlatform")
+                    {
+                        if(y.Bottom >= screen.Height)
+                        {
+                            int width = random.Next(0, (screen.Width / 2));
+                            PictureBox imageControl = new PictureBox();
+                            imageControl.Width = width;
+                            imageControl.Height = HEIGHT;
+                            imageControl.Tag = "risingPlatform";
+                            imageControl.BackColor = Color.AliceBlue;
+                            Controls.Add(imageControl);
+                            imageControl.Left = 0;
+                            imageControl.Top = screen.Height;
+                        }
+                    }
+                }
+            }
         }
 
         private void fallCheck_Tick(object sender, EventArgs e)
