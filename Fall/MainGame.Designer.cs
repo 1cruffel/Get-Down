@@ -40,12 +40,14 @@
             this.fallCheck = new System.Windows.Forms.Timer(this.components);
             this.platchr = new System.Windows.Forms.Timer(this.components);
             this.platforms = new System.Windows.Forms.Timer(this.components);
+            this.platM = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.floor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platM)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -62,6 +64,7 @@
             this.screen.Controls.Add(this.platR);
             this.screen.Controls.Add(this.platL);
             this.screen.Controls.Add(this.player);
+            this.screen.Controls.Add(this.platM);
             this.screen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.screen.Location = new System.Drawing.Point(0, 0);
             this.screen.Name = "screen";
@@ -81,9 +84,9 @@
             // platR
             // 
             this.platR.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.platR.Location = new System.Drawing.Point(509, 395);
+            this.platR.Location = new System.Drawing.Point(567, 395);
             this.platR.Name = "platR";
-            this.platR.Size = new System.Drawing.Size(291, 28);
+            this.platR.Size = new System.Drawing.Size(233, 28);
             this.platR.TabIndex = 2;
             this.platR.TabStop = false;
             this.platR.Tag = "platform";
@@ -93,10 +96,10 @@
             this.platL.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.platL.Location = new System.Drawing.Point(0, 395);
             this.platL.Name = "platL";
-            this.platL.Size = new System.Drawing.Size(402, 28);
+            this.platL.Size = new System.Drawing.Size(251, 28);
             this.platL.TabIndex = 1;
             this.platL.TabStop = false;
-            this.platL.Tag = "platform";
+            this.platL.Tag = "risingPlatform";
             // 
             // player
             // 
@@ -136,6 +139,16 @@
             this.platforms.Interval = 1;
             this.platforms.Tick += new System.EventHandler(this.platforms_Tick);
             // 
+            // platM
+            // 
+            this.platM.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.platM.Location = new System.Drawing.Point(352, 395);
+            this.platM.Name = "platM";
+            this.platM.Size = new System.Drawing.Size(112, 28);
+            this.platM.TabIndex = 4;
+            this.platM.TabStop = false;
+            this.platM.Tag = "platform";
+            // 
             // MainGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,6 +167,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.platR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.platL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platM)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -171,6 +185,7 @@
         private System.Windows.Forms.Timer fallCheck;
         private System.Windows.Forms.Timer platchr;
         private System.Windows.Forms.Timer platforms;
+        private System.Windows.Forms.PictureBox platM;
     }
 }
 

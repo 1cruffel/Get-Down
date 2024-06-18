@@ -13,6 +13,8 @@ namespace Fall
     public partial class MainGame : Form
     { 
         bool right, left, jump, rising = false;
+        Random random = new Random();
+        Random random1 = new Random();
         int G = 10, Force;
         int speed = 1, x, diff = 80;
         int total, notTouching;
@@ -57,27 +59,7 @@ namespace Fall
 
         private void platforms_Tick(object sender, EventArgs e)
         {
-            foreach(Control y in screen.Controls)
-            {
-                if(y is PictureBox)
-                {
-                    if((String)y.Tag == "risingPlatform")
-                    {
-                        if(y.Bottom >= screen.Height)
-                        {
-                            int width = random.Next(0, (screen.Width / 2));
-                            PictureBox imageControl = new PictureBox();
-                            imageControl.Width = width;
-                            imageControl.Height = HEIGHT;
-                            imageControl.Tag = "risingPlatform";
-                            imageControl.BackColor = Color.AliceBlue;
-                            Controls.Add(imageControl);
-                            imageControl.Left = 0;
-                            imageControl.Top = screen.Height;
-                        }
-                    }
-                }
-            }
+
         }
 
         private void fallCheck_Tick(object sender, EventArgs e)
@@ -85,7 +67,7 @@ namespace Fall
             player.Top += 7;
         }
 
-        Random random = new Random();
+        
         public MainGame()
         {
             InitializeComponent();
@@ -93,18 +75,22 @@ namespace Fall
 
         private void gameTick_Tick(object sender, EventArgs e)
         {
-            //check when platform reaches top
+            //check when platform set 1 reaches top
             if(platL.Top <= 0)
             {
-                x = random.Next(0, (screen.Width - diff));
                 platL.Top = screen.Height;
                 platR.Top = screen.Height;
-                platL.Width = x;
-                platR.Width = screen.Width - (x + diff);
-                platR.Left = screen.Width - platR.Width;
+                platL.Width = random.Next(0, ((screen.Width / 2) - diff));                                
+                random.Next(1,1);
+                platR.Width = random1.Next(0, ((screen.Width / 2) - diff));
+                platR.Left = screen.Width - platL.Width;
+                platL.Left = 0;
+                platM.Width = screen.Width - (platR.Width + platL.Width + (diff * 2));
+                platM.Left = screen.Width - (platL.Width + diff);
             }
                 platL.Top -= speed;
                 platR.Top = platL.Top;
+                platM.Top = platL.Top;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -127,8 +113,9 @@ namespace Fall
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Right) { right = false; }
-            if (e.KeyCode == Keys.Left) { left = false; }
+            if (e.KeyCode == Keys.Right) 
+            { right = false; player.BackgroundImage = new Bitmap("../../../skins/blood1.png"); }
+            if (e.KeyCode == Keys.Left) { left = false; player.BackgroundImage = new Bitmap("../../../skins/blood1.png"); }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -137,16 +124,18 @@ namespace Fall
             if (player.Left == platL.Width && player.Right < platL.Right - player.Width / 2 && player.Bottom > platL.Top && player.Top < platL.Bottom)
             {
                 left = false;
+                player.BackgroundImage = new Bitmap("../../../skins/blood1.png");
             }
             //right collision
             if (player.Right == platR.Width && player.Left < platR.Left - player.Width / 2 && player.Bottom > platR.Top && player.Top < platR.Bottom)
             {
                 right = false;
+                player.BackgroundImage = new Bitmap("../../../skins/blood1.png");
             }
            
             //gravity
-            if (right == true) {player.Left += 5; }
-            if (left == true) { player.Left -= 5; }
+            if (right == true) {player.Left += 5; player.BackgroundImage = new Bitmap("../../../skins/blood2.png"); }
+            if (left == true) { player.Left -= 5; player.BackgroundImage = new Bitmap("../../../skins/blood3.png"); }
             if (jump == true)
             {
                 player.Top -= Force;
@@ -194,6 +183,7 @@ namespace Fall
                 player.Top -= speed;
             }
 
+            
         }
     }
 }
