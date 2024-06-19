@@ -35,12 +35,12 @@
             this.platR = new System.Windows.Forms.PictureBox();
             this.platL = new System.Windows.Forms.PictureBox();
             this.player = new System.Windows.Forms.PictureBox();
+            this.platM = new System.Windows.Forms.PictureBox();
             this.playerTick = new System.Windows.Forms.Timer(this.components);
             this.gameTick = new System.Windows.Forms.Timer(this.components);
             this.fallCheck = new System.Windows.Forms.Timer(this.components);
             this.platchr = new System.Windows.Forms.Timer(this.components);
             this.platforms = new System.Windows.Forms.Timer(this.components);
-            this.platM = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.floor)).BeginInit();
@@ -86,17 +86,17 @@
             this.platR.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.platR.Location = new System.Drawing.Point(567, 395);
             this.platR.Name = "platR";
-            this.platR.Size = new System.Drawing.Size(233, 28);
+            this.platR.Size = new System.Drawing.Size(233, 32);
             this.platR.TabIndex = 2;
             this.platR.TabStop = false;
-            this.platR.Tag = "platform";
+            this.platR.Tag = "risingPlatform";
             // 
             // platL
             // 
             this.platL.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.platL.Location = new System.Drawing.Point(0, 395);
             this.platL.Name = "platL";
-            this.platL.Size = new System.Drawing.Size(251, 28);
+            this.platL.Size = new System.Drawing.Size(251, 32);
             this.platL.TabIndex = 1;
             this.platL.TabStop = false;
             this.platL.Tag = "risingPlatform";
@@ -106,9 +106,19 @@
             this.player.BackColor = System.Drawing.Color.Black;
             this.player.Location = new System.Drawing.Point(425, 218);
             this.player.Name = "player";
-            this.player.Size = new System.Drawing.Size(25, 25);
+            this.player.Size = new System.Drawing.Size(32, 32);
             this.player.TabIndex = 0;
             this.player.TabStop = false;
+            // 
+            // platM
+            // 
+            this.platM.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.platM.Location = new System.Drawing.Point(357, 391);
+            this.platM.Name = "platM";
+            this.platM.Size = new System.Drawing.Size(112, 32);
+            this.platM.TabIndex = 4;
+            this.platM.TabStop = false;
+            this.platM.Tag = "risingPlatform";
             // 
             // playerTick
             // 
@@ -138,16 +148,6 @@
             this.platforms.Enabled = true;
             this.platforms.Interval = 1;
             this.platforms.Tick += new System.EventHandler(this.platforms_Tick);
-            // 
-            // platM
-            // 
-            this.platM.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.platM.Location = new System.Drawing.Point(352, 395);
-            this.platM.Name = "platM";
-            this.platM.Size = new System.Drawing.Size(112, 28);
-            this.platM.TabIndex = 4;
-            this.platM.TabStop = false;
-            this.platM.Tag = "platform";
             // 
             // MainGame
             // 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Fall
 {
@@ -20,6 +21,8 @@ namespace Fall
         int total, notTouching;
         const int HEIGHT = 10;
         bool falling;
+        string skin;
+        string[] playerInfo;
 
         private void platchr_Tick(object sender, EventArgs e)
         {
@@ -71,6 +74,34 @@ namespace Fall
         public MainGame()
         {
             InitializeComponent();
+            string line;
+            using (StreamReader reader = new StreamReader("../../../values.csv"))
+            {
+                while ((line = reader.ReadLine()) != null)
+                {
+                    playerInfo = line.Split(',');
+                    //change to input usernames
+                    if (playerInfo[0] == "charlie")
+                    {
+                        skin = playerInfo[1];
+                        MessageBox.Show(skin);
+                    }
+                   
+
+                }
+            }
+
+            player.BackgroundImage = new Bitmap("../../../skins/" + skin + "0.png");
+            foreach (Control x in screen.Controls)
+                {
+                    if (x is PictureBox)
+                    {
+                        if ((string)x.Tag == "risingPlatform")
+                        {
+                            x.BackgroundImage = new Bitmap("../../../textures/platform.png");
+                        }
+                    }
+                }
         }
 
         private void gameTick_Tick(object sender, EventArgs e)
@@ -86,7 +117,7 @@ namespace Fall
                 platR.Left = screen.Width - platL.Width;
                 platL.Left = 0;
                 platM.Width = screen.Width - (platR.Width + platL.Width + (diff * 2));
-                platM.Left = screen.Width - (platL.Width + diff);
+                platM.Left = platL.Width + diff;
             }
                 platL.Top -= speed;
                 platR.Top = platL.Top;
@@ -114,8 +145,8 @@ namespace Fall
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Right) 
-            { right = false; player.BackgroundImage = new Bitmap("../../../skins/blood1.png"); }
-            if (e.KeyCode == Keys.Left) { left = false; player.BackgroundImage = new Bitmap("../../../skins/blood1.png"); }
+            { right = false; player.BackgroundImage = new Bitmap("../../../skins/" + skin + "0.png"); }
+            if (e.KeyCode == Keys.Left) { left = false; player.BackgroundImage = new Bitmap("../../../skins/" + skin + "0.png"); }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -124,18 +155,18 @@ namespace Fall
             if (player.Left == platL.Width && player.Right < platL.Right - player.Width / 2 && player.Bottom > platL.Top && player.Top < platL.Bottom)
             {
                 left = false;
-                player.BackgroundImage = new Bitmap("../../../skins/blood1.png");
+                player.BackgroundImage = new Bitmap("../../../skins/" + skin + "0.png");
             }
             //right collision
             if (player.Right == platR.Width && player.Left < platR.Left - player.Width / 2 && player.Bottom > platR.Top && player.Top < platR.Bottom)
             {
                 right = false;
-                player.BackgroundImage = new Bitmap("../../../skins/blood1.png");
+                player.BackgroundImage = new Bitmap("../../../skins/" + skin + "0.png");
             }
            
             //gravity
-            if (right == true) {player.Left += 5; player.BackgroundImage = new Bitmap("../../../skins/blood2.png"); }
-            if (left == true) { player.Left -= 5; player.BackgroundImage = new Bitmap("../../../skins/blood3.png"); }
+            if (right == true) {player.Left += 5; player.BackgroundImage = new Bitmap("../../../skins/" + skin + "1.png"); }
+            if (left == true) { player.Left -= 5; player.BackgroundImage = new Bitmap("../../../skins/" + skin + "2.png"); }
             if (jump == true)
             {
                 player.Top -= Force;
