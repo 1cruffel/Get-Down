@@ -63,8 +63,8 @@
             this.screen.Controls.Add(this.floor);
             this.screen.Controls.Add(this.platR);
             this.screen.Controls.Add(this.platL);
-            this.screen.Controls.Add(this.player);
             this.screen.Controls.Add(this.platM);
+            this.screen.Controls.Add(this.player);
             this.screen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.screen.Location = new System.Drawing.Point(0, 0);
             this.screen.Name = "screen";
@@ -103,7 +103,7 @@
             // 
             // player
             // 
-            this.player.BackColor = System.Drawing.Color.Black;
+            this.player.BackColor = System.Drawing.Color.Transparent;
             this.player.Location = new System.Drawing.Point(425, 218);
             this.player.Name = "player";
             this.player.Size = new System.Drawing.Size(32, 32);

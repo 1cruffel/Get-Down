@@ -84,7 +84,6 @@ namespace Fall
                     if (playerInfo[0] == "charlie")
                     {
                         skin = playerInfo[1];
-                        MessageBox.Show(skin);
                     }
                    
 
@@ -113,11 +112,12 @@ namespace Fall
                 platR.Top = screen.Height;
                 platL.Width = random.Next(0, ((screen.Width / 2) - diff));                                
                 random.Next(1,1);
-                platR.Width = random1.Next(0, ((screen.Width / 2) - diff));
-                platR.Left = screen.Width - platL.Width;
+                platR.Width = random1.Next(0, ((screen.Width / 2) - diff));                
                 platL.Left = 0;
                 platM.Width = screen.Width - (platR.Width + platL.Width + (diff * 2));
                 platM.Left = platL.Width + diff;
+                platR.Width = screen.Width - (platM.Left + platM.Width + diff);
+                platR.Left = platM.Width + platM.Right + diff;
             }
                 platL.Top -= speed;
                 platR.Top = platL.Top;
@@ -180,33 +180,6 @@ namespace Fall
             {
                 left = false;
             }
-            // if (player.Top + player.Height >= screen.Height)
-            // {
-            //
-            // }
-            // else if(player.Top + player.Height < platL.Top && player.Top + player.Height > platL.Top - 5)
-            // {
-            //     if (player.Left < platL.Width || player.Right < platR.Width)
-            //     {
-            //         Force = 0;
-            //         jump = false;
-            //         rising = true;
-            //     }
-            //     else
-            //     {
-            //         player.Top += 7; //falling
-            //         rising = false;
-            //     }
-            //
-            // }
-            // //else
-            // {
-            //     player.Top += 7; //falling
-            //     rising = false;
-            // }
-            //
-            //top collision
-
             if (rising)
             {
                 Force = 0;
