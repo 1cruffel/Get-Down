@@ -16,7 +16,7 @@ namespace Fall
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainGame());
+            Application.Run(new Start());
         }
     }
 }

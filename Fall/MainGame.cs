@@ -102,7 +102,6 @@ namespace Fall
                     }
                 }
         }
-
         private void gameTick_Tick(object sender, EventArgs e)
         {
             //check when platform set 1 reaches top
@@ -123,7 +122,6 @@ namespace Fall
                 platR.Top = platL.Top;
                 platM.Top = platL.Top;
         }
-
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Right && player.Left + player.Width < screen.Width) { right = true; }
@@ -141,7 +139,6 @@ namespace Fall
             }
             
         }
-
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Right) 
@@ -186,8 +183,6 @@ namespace Fall
                 jump = false;
                 player.Top -= speed;
             }
-
-            
         }
     }
 }
