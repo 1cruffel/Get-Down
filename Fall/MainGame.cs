@@ -20,10 +20,9 @@ namespace Fall
         int speed = 1, x, diff = 80;
         int playerspeed = 7;
         int total, notTouching;
-        const int HEIGHT = 10;
-        bool falling;
         string skin;
         string user;
+        int level = 0;
         string[] playerInfo;
 
         private void platchr_Tick(object sender, EventArgs e)
@@ -107,12 +106,37 @@ namespace Fall
                         }
                     }
                 }
+            Random leftOrRight1 = new Random();
+            Random questions1 = new Random();
+            int num1, num2;
+            Random questions2 = new Random();
+            num1 = questions1.Next(0, 11);
+            num2 = questions2.Next(0, 11);
+            question1.Text = $"{num1} + {num2} = ?";
+            int ans1 = num1 + num2;
+            correctAns.Text = ans1.ToString();
+            wrongAns.Text = questions1.Next(1, 21).ToString();
+            int LR = leftOrRight1.Next(0, 2);
+            if (LR == 0)
+            {
+                platCorrect.Left = platL.Width;
+                platWrong.Left = platM.Width + platM.Left;
+            }
+            else
+            {
+                platCorrect.Left = platM.Width + platM.Left;
+                platWrong.Left = platL.Width;
+            }
         }
         private void gameTick_Tick(object sender, EventArgs e)
         {
             //check when platform set 1 reaches top
             if(platL.Top <= 0)
             {
+                Random leftOrRight1 = new Random();
+                Random questions1 = new Random();
+                int num1, num2;
+                Random questions2 = new Random();
                 platL.Top = screen.Height;
                 platR.Top = screen.Height;
                 platM.Top = screen.Height;
@@ -125,13 +149,44 @@ namespace Fall
                 platR.Left = screen.Width - platR.Width;
                 platCorrect.Width = diff;
                 platWrong.Width = diff;
+                if(level < 10)
+                {
+                    num1 = questions1.Next(0, 11);
+                    num2 = questions2.Next(0, 11);
+                    question1.Text = $"{num1} + {num2} = ?";
+                    int ans1 = num1 + num2;
+                    correctAns.Text = ans1.ToString();
+                    int fake = questions1.Next(ans1 - 2, ans1 + 3);
+                    while (fake == ans1)
+                    {
+                        fake = questions1.Next(ans1 - 2, ans1 + 3);
+                    }
+                    wrongAns.Text = fake.ToString();
+                    int LR = leftOrRight1.Next(0, 2);
+                    if (LR == 0)
+                    {
+                        platCorrect.Left = platL.Width;
+                        platWrong.Left = platM.Width + platM.Left;
+                    }
+                    else
+                    {
+                        platCorrect.Left = platM.Width + platM.Left;
+                        platWrong.Left = platL.Width;
+                    }
+                }
             }
-
-                platL.Top -= speed;
-                platR.Top = platL.Top;
-                platM.Top = platL.Top;
-                platCorrect.Top = platL.Top;
-                platWrong.Top = platL.Top;
+                
+            platL.Top -= speed;
+            platR.Top = platL.Top;
+            platM.Top = platL.Top;
+            platCorrect.Top = platL.Top;
+            platWrong.Top = platL.Top;
+            wrongAns.Top = platL.Top + 10;
+            correctAns.Top = platL.Top + 10;
+            correctAns.Left = platCorrect.Left + ((platCorrect.Width - correctAns.Width) / 2);
+            wrongAns.Left = platWrong.Left + ((platWrong.Width - wrongAns.Width) / 2);
+            question1.Top = platL.Top + 10;
+            question1.Left = platM.Left + (((platM.Width - question1.Width) / 2));
             if (player.Bounds.IntersectsWith(platWrong.Bounds))
             {
                 playerspeed = 1;

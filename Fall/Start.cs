@@ -43,6 +43,7 @@ namespace Fall
             this.buttonLoad.Size = new System.Drawing.Size(64, 32);
             this.buttonLoad.TabIndex = 3;
             this.buttonLoad.TabStop = false;
+            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click_1);
             this.buttonLoad.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonLoad_MouseDown);
             this.buttonLoad.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonLoad_MouseUp);
             // 
@@ -238,10 +239,18 @@ namespace Fall
 
         private void buttonStart_MouseUp(object sender, MouseEventArgs e)
         {
-            buttonStart.BackgroundImage = new Bitmap("../../../startscreen/buttons/start.png");
-            Form play = new MainGame();
-            play.Show();
-            this.Hide();
+            if (user == null)
+            {
+
+            }
+            else
+            {
+                buttonStart.BackgroundImage = new Bitmap("../../../startscreen/buttons/start.png");
+                Form play = new MainGame();
+                play.Show();
+                this.Hide();
+            }
+            
         }
 
         private void Start_KeyDown(object sender, KeyEventArgs e)
@@ -263,6 +272,15 @@ namespace Fall
             {
                 buttonLoad_MouseUp(user, null);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void buttonLoad_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
