@@ -34,20 +34,24 @@
             this.floor = new System.Windows.Forms.PictureBox();
             this.platR = new System.Windows.Forms.PictureBox();
             this.platL = new System.Windows.Forms.PictureBox();
-            this.player = new System.Windows.Forms.PictureBox();
             this.platM = new System.Windows.Forms.PictureBox();
+            this.player = new System.Windows.Forms.PictureBox();
             this.playerTick = new System.Windows.Forms.Timer(this.components);
             this.gameTick = new System.Windows.Forms.Timer(this.components);
             this.fallCheck = new System.Windows.Forms.Timer(this.components);
             this.platchr = new System.Windows.Forms.Timer(this.components);
             this.platforms = new System.Windows.Forms.Timer(this.components);
+            this.platCorrect = new System.Windows.Forms.PictureBox();
+            this.platWrong = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.floor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platCorrect)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platWrong)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -60,6 +64,8 @@
             // 
             // screen
             // 
+            this.screen.Controls.Add(this.platWrong);
+            this.screen.Controls.Add(this.platCorrect);
             this.screen.Controls.Add(this.floor);
             this.screen.Controls.Add(this.platR);
             this.screen.Controls.Add(this.platL);
@@ -68,15 +74,15 @@
             this.screen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.screen.Location = new System.Drawing.Point(0, 0);
             this.screen.Name = "screen";
-            this.screen.Size = new System.Drawing.Size(800, 450);
+            this.screen.Size = new System.Drawing.Size(1244, 596);
             this.screen.TabIndex = 1;
             // 
             // floor
             // 
             this.floor.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.floor.Location = new System.Drawing.Point(0, 422);
+            this.floor.Location = new System.Drawing.Point(-1, 568);
             this.floor.Name = "floor";
-            this.floor.Size = new System.Drawing.Size(800, 28);
+            this.floor.Size = new System.Drawing.Size(1244, 28);
             this.floor.TabIndex = 3;
             this.floor.TabStop = false;
             this.floor.Tag = "platform";
@@ -84,9 +90,9 @@
             // platR
             // 
             this.platR.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.platR.Location = new System.Drawing.Point(567, 395);
+            this.platR.Location = new System.Drawing.Point(960, 391);
             this.platR.Name = "platR";
-            this.platR.Size = new System.Drawing.Size(233, 32);
+            this.platR.Size = new System.Drawing.Size(283, 32);
             this.platR.TabIndex = 2;
             this.platR.TabStop = false;
             this.platR.Tag = "risingPlatform";
@@ -94,31 +100,31 @@
             // platL
             // 
             this.platL.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.platL.Location = new System.Drawing.Point(0, 395);
+            this.platL.Location = new System.Drawing.Point(0, 391);
             this.platL.Name = "platL";
             this.platL.Size = new System.Drawing.Size(251, 32);
             this.platL.TabIndex = 1;
             this.platL.TabStop = false;
             this.platL.Tag = "risingPlatform";
             // 
-            // player
-            // 
-            this.player.BackColor = System.Drawing.Color.Transparent;
-            this.player.Location = new System.Drawing.Point(425, 218);
-            this.player.Name = "player";
-            this.player.Size = new System.Drawing.Size(32, 32);
-            this.player.TabIndex = 0;
-            this.player.TabStop = false;
-            // 
             // platM
             // 
             this.platM.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.platM.Location = new System.Drawing.Point(357, 391);
             this.platM.Name = "platM";
-            this.platM.Size = new System.Drawing.Size(112, 32);
+            this.platM.Size = new System.Drawing.Size(491, 32);
             this.platM.TabIndex = 4;
             this.platM.TabStop = false;
             this.platM.Tag = "risingPlatform";
+            // 
+            // player
+            // 
+            this.player.BackColor = System.Drawing.Color.Transparent;
+            this.player.Location = new System.Drawing.Point(508, 250);
+            this.player.Name = "player";
+            this.player.Size = new System.Drawing.Size(32, 32);
+            this.player.TabIndex = 0;
+            this.player.TabStop = false;
             // 
             // playerTick
             // 
@@ -149,11 +155,31 @@
             this.platforms.Interval = 1;
             this.platforms.Tick += new System.EventHandler(this.platforms_Tick);
             // 
+            // platCorrect
+            // 
+            this.platCorrect.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.platCorrect.Location = new System.Drawing.Point(242, 391);
+            this.platCorrect.Name = "platCorrect";
+            this.platCorrect.Size = new System.Drawing.Size(118, 32);
+            this.platCorrect.TabIndex = 5;
+            this.platCorrect.TabStop = false;
+            this.platCorrect.Tag = "";
+            // 
+            // platWrong
+            // 
+            this.platWrong.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.platWrong.Location = new System.Drawing.Point(845, 391);
+            this.platWrong.Name = "platWrong";
+            this.platWrong.Size = new System.Drawing.Size(118, 32);
+            this.platWrong.TabIndex = 6;
+            this.platWrong.TabStop = false;
+            this.platWrong.Tag = "platform";
+            // 
             // MainGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1244, 596);
             this.Controls.Add(this.screen);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -166,8 +192,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.floor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.platR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.platL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.platM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platCorrect)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platWrong)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -186,6 +214,8 @@
         private System.Windows.Forms.Timer platchr;
         private System.Windows.Forms.Timer platforms;
         private System.Windows.Forms.PictureBox platM;
+        private System.Windows.Forms.PictureBox platWrong;
+        private System.Windows.Forms.PictureBox platCorrect;
     }
 }
 

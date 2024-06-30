@@ -18,10 +18,12 @@ namespace Fall
         Random random1 = new Random();
         int G = 10, Force;
         int speed = 1, x, diff = 80;
+        int playerspeed = 7;
         int total, notTouching;
         const int HEIGHT = 10;
         bool falling;
         string skin;
+        string user;
         string[] playerInfo;
 
         private void platchr_Tick(object sender, EventArgs e)
@@ -75,22 +77,26 @@ namespace Fall
         {
             InitializeComponent();
             string line;
+            using (StreamReader txt = new StreamReader("../../../currentuser.txt"))
+            {
+                user = txt.ReadLine();
+            }
             using (StreamReader reader = new StreamReader("../../../values.csv"))
             {
                 while ((line = reader.ReadLine()) != null)
                 {
                     playerInfo = line.Split(',');
                     //change to input usernames
-                    if (playerInfo[0] == "charlie")
+                    if (playerInfo[0] == user)
                     {
                         skin = playerInfo[1];
                     }
-                   
+
 
                 }
             }
 
-            player.BackgroundImage = new Bitmap("../../../skins/" + skin + "0.png");
+            player.BackgroundImage = new Bitmap($"../../../skins/{skin}0.png");
             foreach (Control x in screen.Controls)
                 {
                     if (x is PictureBox)
@@ -109,18 +115,31 @@ namespace Fall
             {
                 platL.Top = screen.Height;
                 platR.Top = screen.Height;
+                platM.Top = screen.Height;
                 platL.Width = random.Next(0, ((screen.Width / 2) - diff));                                
                 random.Next(1,1);
                 platR.Width = random1.Next(0, ((screen.Width / 2) - diff));                
                 platL.Left = 0;
                 platM.Width = screen.Width - (platR.Width + platL.Width + (diff * 2));
                 platM.Left = platL.Width + diff;
-                platR.Width = screen.Width - (platM.Left + platM.Width + diff);
-                platR.Left = platM.Width + platM.Right + diff;
+                platR.Left = screen.Width - platR.Width;
+                platCorrect.Width = diff;
+                platWrong.Width = diff;
             }
+
                 platL.Top -= speed;
                 platR.Top = platL.Top;
                 platM.Top = platL.Top;
+                platCorrect.Top = platL.Top;
+                platWrong.Top = platL.Top;
+            if (player.Bounds.IntersectsWith(platWrong.Bounds))
+            {
+                playerspeed = 1;
+            }
+            else
+            {
+                playerspeed = 8;
+            }
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -162,8 +181,8 @@ namespace Fall
             }
            
             //gravity
-            if (right == true) {player.Left += 5; player.BackgroundImage = new Bitmap("../../../skins/" + skin + "1.png"); }
-            if (left == true) { player.Left -= 5; player.BackgroundImage = new Bitmap("../../../skins/" + skin + "2.png"); }
+            if (right == true) {player.Left += playerspeed; player.BackgroundImage = new Bitmap("../../../skins/" + skin + "1.png"); }
+            if (left == true) { player.Left -= playerspeed; player.BackgroundImage = new Bitmap("../../../skins/" + skin + "2.png"); }
             if (jump == true)
             {
                 player.Top -= Force;
