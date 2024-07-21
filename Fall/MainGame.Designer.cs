@@ -29,8 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainGame));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.screen = new System.Windows.Forms.Panel();
+            this.levelTag = new System.Windows.Forms.Label();
+            this.wrongAns = new System.Windows.Forms.Label();
+            this.correctAns = new System.Windows.Forms.Label();
             this.question1 = new System.Windows.Forms.Label();
             this.platWrong = new System.Windows.Forms.PictureBox();
             this.platCorrect = new System.Windows.Forms.PictureBox();
@@ -39,13 +43,19 @@
             this.platL = new System.Windows.Forms.PictureBox();
             this.platM = new System.Windows.Forms.PictureBox();
             this.player = new System.Windows.Forms.PictureBox();
+            this.wrongAns2 = new System.Windows.Forms.Label();
+            this.correctAns2 = new System.Windows.Forms.Label();
+            this.question2 = new System.Windows.Forms.Label();
+            this.platWrong2 = new System.Windows.Forms.PictureBox();
+            this.platCorrect2 = new System.Windows.Forms.PictureBox();
+            this.platR2 = new System.Windows.Forms.PictureBox();
+            this.platL2 = new System.Windows.Forms.PictureBox();
+            this.platM2 = new System.Windows.Forms.PictureBox();
             this.playerTick = new System.Windows.Forms.Timer(this.components);
             this.gameTick = new System.Windows.Forms.Timer(this.components);
             this.fallCheck = new System.Windows.Forms.Timer(this.components);
             this.platchr = new System.Windows.Forms.Timer(this.components);
             this.platforms = new System.Windows.Forms.Timer(this.components);
-            this.correctAns = new System.Windows.Forms.Label();
-            this.wrongAns = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.screen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.platWrong)).BeginInit();
@@ -55,6 +65,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.platL)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.platM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platWrong2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platCorrect2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platR2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platL2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platM2)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -67,6 +82,7 @@
             // 
             // screen
             // 
+            this.screen.Controls.Add(this.levelTag);
             this.screen.Controls.Add(this.wrongAns);
             this.screen.Controls.Add(this.correctAns);
             this.screen.Controls.Add(this.question1);
@@ -77,19 +93,60 @@
             this.screen.Controls.Add(this.platL);
             this.screen.Controls.Add(this.platM);
             this.screen.Controls.Add(this.player);
+            this.screen.Controls.Add(this.wrongAns2);
+            this.screen.Controls.Add(this.correctAns2);
+            this.screen.Controls.Add(this.question2);
+            this.screen.Controls.Add(this.platWrong2);
+            this.screen.Controls.Add(this.platCorrect2);
+            this.screen.Controls.Add(this.platR2);
+            this.screen.Controls.Add(this.platL2);
+            this.screen.Controls.Add(this.platM2);
             this.screen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.screen.Location = new System.Drawing.Point(0, 0);
             this.screen.Name = "screen";
             this.screen.Size = new System.Drawing.Size(1244, 596);
             this.screen.TabIndex = 1;
             // 
+            // levelTag
+            // 
+            this.levelTag.AutoSize = true;
+            this.levelTag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.levelTag.Location = new System.Drawing.Point(12, 9);
+            this.levelTag.Name = "levelTag";
+            this.levelTag.Size = new System.Drawing.Size(31, 13);
+            this.levelTag.TabIndex = 10;
+            this.levelTag.Text = "12+3";
+            this.levelTag.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // wrongAns
+            // 
+            this.wrongAns.AutoSize = true;
+            this.wrongAns.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wrongAns.Location = new System.Drawing.Point(884, 10);
+            this.wrongAns.Name = "wrongAns";
+            this.wrongAns.Size = new System.Drawing.Size(31, 13);
+            this.wrongAns.TabIndex = 9;
+            this.wrongAns.Text = "12+3";
+            this.wrongAns.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // correctAns
+            // 
+            this.correctAns.AutoSize = true;
+            this.correctAns.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.correctAns.Location = new System.Drawing.Point(282, 10);
+            this.correctAns.Name = "correctAns";
+            this.correctAns.Size = new System.Drawing.Size(31, 13);
+            this.correctAns.TabIndex = 8;
+            this.correctAns.Text = "12+3";
+            this.correctAns.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // question1
             // 
             this.question1.AutoSize = true;
-            this.question1.Font = new System.Drawing.Font("OCR A Std", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.question1.Location = new System.Drawing.Point(490, 401);
+            this.question1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.question1.Location = new System.Drawing.Point(491, 10);
             this.question1.Name = "question1";
-            this.question1.Size = new System.Drawing.Size(37, 12);
+            this.question1.Size = new System.Drawing.Size(31, 13);
             this.question1.TabIndex = 7;
             this.question1.Text = "12+3";
             this.question1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -97,7 +154,7 @@
             // platWrong
             // 
             this.platWrong.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.platWrong.Location = new System.Drawing.Point(845, 391);
+            this.platWrong.Location = new System.Drawing.Point(846, 0);
             this.platWrong.Name = "platWrong";
             this.platWrong.Size = new System.Drawing.Size(118, 32);
             this.platWrong.TabIndex = 6;
@@ -107,7 +164,7 @@
             // platCorrect
             // 
             this.platCorrect.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.platCorrect.Location = new System.Drawing.Point(242, 391);
+            this.platCorrect.Location = new System.Drawing.Point(243, 0);
             this.platCorrect.Name = "platCorrect";
             this.platCorrect.Size = new System.Drawing.Size(118, 32);
             this.platCorrect.TabIndex = 5;
@@ -127,7 +184,7 @@
             // platR
             // 
             this.platR.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.platR.Location = new System.Drawing.Point(960, 391);
+            this.platR.Location = new System.Drawing.Point(961, 0);
             this.platR.Name = "platR";
             this.platR.Size = new System.Drawing.Size(283, 32);
             this.platR.TabIndex = 2;
@@ -137,7 +194,7 @@
             // platL
             // 
             this.platL.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.platL.Location = new System.Drawing.Point(0, 391);
+            this.platL.Location = new System.Drawing.Point(1, 0);
             this.platL.Name = "platL";
             this.platL.Size = new System.Drawing.Size(251, 32);
             this.platL.TabIndex = 1;
@@ -147,7 +204,7 @@
             // platM
             // 
             this.platM.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.platM.Location = new System.Drawing.Point(357, 391);
+            this.platM.Location = new System.Drawing.Point(358, 0);
             this.platM.Name = "platM";
             this.platM.Size = new System.Drawing.Size(491, 32);
             this.platM.TabIndex = 4;
@@ -163,6 +220,89 @@
             this.player.TabIndex = 0;
             this.player.TabStop = false;
             // 
+            // wrongAns2
+            // 
+            this.wrongAns2.AutoSize = true;
+            this.wrongAns2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wrongAns2.Location = new System.Drawing.Point(884, 332);
+            this.wrongAns2.Name = "wrongAns2";
+            this.wrongAns2.Size = new System.Drawing.Size(31, 13);
+            this.wrongAns2.TabIndex = 18;
+            this.wrongAns2.Text = "12+3";
+            this.wrongAns2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // correctAns2
+            // 
+            this.correctAns2.AutoSize = true;
+            this.correctAns2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.correctAns2.Location = new System.Drawing.Point(282, 332);
+            this.correctAns2.Name = "correctAns2";
+            this.correctAns2.Size = new System.Drawing.Size(31, 13);
+            this.correctAns2.TabIndex = 17;
+            this.correctAns2.Text = "12+3";
+            this.correctAns2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // question2
+            // 
+            this.question2.AutoSize = true;
+            this.question2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.question2.Location = new System.Drawing.Point(491, 332);
+            this.question2.Name = "question2";
+            this.question2.Size = new System.Drawing.Size(31, 13);
+            this.question2.TabIndex = 16;
+            this.question2.Text = "12+3";
+            this.question2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // platWrong2
+            // 
+            this.platWrong2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.platWrong2.Location = new System.Drawing.Point(846, 322);
+            this.platWrong2.Name = "platWrong2";
+            this.platWrong2.Size = new System.Drawing.Size(118, 32);
+            this.platWrong2.TabIndex = 15;
+            this.platWrong2.TabStop = false;
+            this.platWrong2.Tag = "platform";
+            // 
+            // platCorrect2
+            // 
+            this.platCorrect2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.platCorrect2.Location = new System.Drawing.Point(243, 322);
+            this.platCorrect2.Name = "platCorrect2";
+            this.platCorrect2.Size = new System.Drawing.Size(118, 32);
+            this.platCorrect2.TabIndex = 14;
+            this.platCorrect2.TabStop = false;
+            this.platCorrect2.Tag = "";
+            // 
+            // platR2
+            // 
+            this.platR2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.platR2.Location = new System.Drawing.Point(961, 322);
+            this.platR2.Name = "platR2";
+            this.platR2.Size = new System.Drawing.Size(283, 32);
+            this.platR2.TabIndex = 12;
+            this.platR2.TabStop = false;
+            this.platR2.Tag = "risingPlatform";
+            // 
+            // platL2
+            // 
+            this.platL2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.platL2.Location = new System.Drawing.Point(1, 322);
+            this.platL2.Name = "platL2";
+            this.platL2.Size = new System.Drawing.Size(251, 32);
+            this.platL2.TabIndex = 11;
+            this.platL2.TabStop = false;
+            this.platL2.Tag = "risingPlatform";
+            // 
+            // platM2
+            // 
+            this.platM2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.platM2.Location = new System.Drawing.Point(358, 322);
+            this.platM2.Name = "platM2";
+            this.platM2.Size = new System.Drawing.Size(491, 32);
+            this.platM2.TabIndex = 13;
+            this.platM2.TabStop = false;
+            this.platM2.Tag = "risingPlatform";
+            // 
             // playerTick
             // 
             this.playerTick.Enabled = true;
@@ -172,7 +312,7 @@
             // gameTick
             // 
             this.gameTick.Enabled = true;
-            this.gameTick.Interval = 5;
+            this.gameTick.Interval = 2;
             this.gameTick.Tick += new System.EventHandler(this.gameTick_Tick);
             // 
             // fallCheck
@@ -192,28 +332,6 @@
             this.platforms.Interval = 1;
             this.platforms.Tick += new System.EventHandler(this.platforms_Tick);
             // 
-            // correctAns
-            // 
-            this.correctAns.AutoSize = true;
-            this.correctAns.Font = new System.Drawing.Font("OCR A Std", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.correctAns.Location = new System.Drawing.Point(281, 401);
-            this.correctAns.Name = "correctAns";
-            this.correctAns.Size = new System.Drawing.Size(37, 12);
-            this.correctAns.TabIndex = 8;
-            this.correctAns.Text = "12+3";
-            this.correctAns.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // wrongAns
-            // 
-            this.wrongAns.AutoSize = true;
-            this.wrongAns.Font = new System.Drawing.Font("OCR A Std", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wrongAns.Location = new System.Drawing.Point(883, 401);
-            this.wrongAns.Name = "wrongAns";
-            this.wrongAns.Size = new System.Drawing.Size(37, 12);
-            this.wrongAns.TabIndex = 9;
-            this.wrongAns.Text = "12+3";
-            this.wrongAns.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // MainGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,7 +339,9 @@
             this.ClientSize = new System.Drawing.Size(1244, 596);
             this.Controls.Add(this.screen);
             this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "MainGame";
             this.Text = "Get Down!";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -236,6 +356,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.platL)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.platM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platWrong2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platCorrect2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platR2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platL2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.platM2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -259,6 +384,15 @@
         private System.Windows.Forms.Label question1;
         private System.Windows.Forms.Label wrongAns;
         private System.Windows.Forms.Label correctAns;
+        private System.Windows.Forms.Label levelTag;
+        private System.Windows.Forms.Label wrongAns2;
+        private System.Windows.Forms.Label correctAns2;
+        private System.Windows.Forms.Label question2;
+        private System.Windows.Forms.PictureBox platWrong2;
+        private System.Windows.Forms.PictureBox platCorrect2;
+        private System.Windows.Forms.PictureBox platR2;
+        private System.Windows.Forms.PictureBox platL2;
+        private System.Windows.Forms.PictureBox platM2;
     }
 }
 

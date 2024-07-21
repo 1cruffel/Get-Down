@@ -20,9 +20,15 @@ namespace Fall
         private Label label1;
         private Label labelUser;
         private PictureBox title;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private PictureBox buttonShop;
         string user;
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
             this.buttonLoad = new System.Windows.Forms.PictureBox();
             this.buttonStart = new System.Windows.Forms.PictureBox();
             this.skin = new System.Windows.Forms.PictureBox();
@@ -30,10 +36,16 @@ namespace Fall
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.labelUser = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.buttonShop = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.buttonLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.skin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.title)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonShop)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLoad
@@ -107,9 +119,60 @@ namespace Fall
             this.labelUser.TabIndex = 6;
             this.labelUser.Text = "No one";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(42, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Money:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(84, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(13, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(21, 39);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "High Score:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(84, 39);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(13, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "0";
+            // 
+            // buttonShop
+            // 
+            this.buttonShop.Location = new System.Drawing.Point(457, 439);
+            this.buttonShop.Name = "buttonShop";
+            this.buttonShop.Size = new System.Drawing.Size(64, 32);
+            this.buttonShop.TabIndex = 11;
+            this.buttonShop.TabStop = false;
+            this.buttonShop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonShop_MouseDown);
+            this.buttonShop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.buttonShop_MouseUp);
+            // 
             // Start
             // 
             this.ClientSize = new System.Drawing.Size(983, 564);
+            this.Controls.Add(this.buttonShop);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.labelUser);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxUsername);
@@ -117,12 +180,17 @@ namespace Fall
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.skin);
             this.Controls.Add(this.title);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Start";
+            this.Text = "Menu";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Start_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.buttonLoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.skin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.title)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonShop)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,8 +208,30 @@ namespace Fall
             skin.BackgroundImage = new Bitmap("../../../skins/large/default.png");
             buttonStart.BackgroundImage = new Bitmap("../../../startscreen/buttons/start.png");
             buttonLoad.BackgroundImage = new Bitmap("../../../startscreen/buttons/load.png");
+            buttonShop.BackgroundImage = new Bitmap("../../../startscreen/buttons/shop0.png");
+            using (StreamReader reader = new StreamReader("../../../currentuser.txt"))
+            {
+                user = reader.ReadLine();
+            }
+            labelUser.Text = user;
+            using (StreamReader reader = new StreamReader("../../../values.csv"))
+            {
+                string line;
+                string[] playerInfo;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    playerInfo = line.Split(',');
+                    //change to input usernames
+                    if (playerInfo[0] == user)
+                    {
 
-
+                        string userSkin = playerInfo[1];
+                        label3.Text = playerInfo[3];
+                        label5.Text = playerInfo[2];
+                        skin.BackgroundImage = new Bitmap("../../../skins/large/" + userSkin + ".png");
+                    }
+                }
+            }
         }
 
         private void skin_Click(object sender, EventArgs e)
@@ -183,6 +273,8 @@ namespace Fall
                         {
                             newPlayer = false;
                             string userSkin = playerInfo[1];
+                            label3.Text = playerInfo[3];
+                            label5.Text = playerInfo[2];
                             skin.BackgroundImage = new Bitmap("../../../skins/large/" + userSkin + ".png");
                         }
                     }                    
@@ -281,6 +373,16 @@ namespace Fall
         private void buttonLoad_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonShop_MouseDown(object sender, MouseEventArgs e)
+        {
+            buttonShop.BackgroundImage = new Bitmap("../../../startscreen/buttons/shop1.png");
+        }
+
+        private void buttonShop_MouseUp(object sender, MouseEventArgs e)
+        {
+            buttonShop.BackgroundImage = new Bitmap("../../../startscreen/buttons/shop0.png");
         }
     }
 }
